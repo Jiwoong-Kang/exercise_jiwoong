@@ -1,0 +1,9 @@
+services:
+  exercise_pg:
+    container_name: exercise_pg
+    image: postgres:latest
+    restart: always
+    env_file:
+      - docker.env
+    ports:
+      - "5436:5432"
