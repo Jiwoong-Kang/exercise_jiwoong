@@ -48,7 +48,7 @@ export class ProductService {
 
   async updateProductById(id: string, updatedProductDto: CreateProductDto) {
     await this.productRepository.update(id, updatedProductDto);
-    const updatedProduct = await this.productRepository.save(updatedProductDto);
+    const updatedProduct = await this.productRepository.findOneBy({ id });
     if (updatedProduct) {
       return updatedProduct;
     }
