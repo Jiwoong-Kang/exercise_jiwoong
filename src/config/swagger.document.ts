@@ -5,6 +5,7 @@ export const setupSwagger = (app: INestApplication) => {
   const config = new DocumentBuilder()
     .setTitle('Jiwoong')
     .setDescription('5th practice')
+    .addBearerAuth()
     .setVersion('1.0')
     .addTag('Jiwoong practice')
     .build();

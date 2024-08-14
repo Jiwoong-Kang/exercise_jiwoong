@@ -3,12 +3,18 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
+import { ChangePasswordDto } from './dto/change-password.dto';
+import { ConfigService } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
+import * as bcrypt from 'bcryptjs';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private userRepository: Repository<User>,
+    private readonly userRepository: Repository<User>,
+    private readonly configService: ConfigService,
+    private readonly jwtService: JwtService,
   ) {}
 
   async getUserById(id: string) {
@@ -31,5 +37,17 @@ export class UserService {
     const newUser = await this.userRepository.create(createUserDto);
     await this.userRepository.save(newUser);
     return newUser;
+  }
+
+  async changePasswordWithToken(changePasswordDto: ChangePasswordDto) {
+    const { email } = this.jwtService.verify(changePasswordDto.token, {
+      secret: this.configService.get('FIND_PASSWORD_TOKEN_SECRET'),
+    });
+    const user = await this.getUserByEmail(email);
+    const hashedPassword = await bcrypt.hash(changePasswordDto.newPassword, 10);
+    await this.userRepository.update(user.id, {
+      password: hashedPassword,
+    });
+    return 'Updated Password successfully';
   }
 }
