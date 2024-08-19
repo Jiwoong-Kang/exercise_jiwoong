@@ -14,4 +14,4 @@ services:
     env_file:
       - docker.env
     ports:
-      - ${REDIS_PORT}:${REDIS_PORT}
+      - '6381:6379'

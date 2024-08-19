@@ -102,6 +102,7 @@ export class AuthService {
       subject: 'Email verification',
       html: signupEmail(generateNumber),
     });
+    return 'Please Check your Email';
   }
 
   generateOTP() {
