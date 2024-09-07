@@ -52,6 +52,7 @@ export class User extends BaseEntity {
   })
   @JoinColumn()
   public profile: Profile;
+
   @BeforeInsert()
   async beforeSaveFunction() {
     try {

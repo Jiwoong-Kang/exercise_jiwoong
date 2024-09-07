@@ -9,8 +9,6 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Provider } from '@nestjs/common';
 import { CreateConsentDto } from '@consent/dto/create-consent.dto';
 import { Consent } from '@consent/entities/consent.entity';
-import { CreateProfileDto } from 'profile/dto/create-profile.dto';
-import { Profile } from 'passport';
 
 export class CreateUserDto {
   @IsString()
