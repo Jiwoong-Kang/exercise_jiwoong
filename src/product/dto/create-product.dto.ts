@@ -18,4 +18,7 @@ export class CreateProductDto {
 
   @ApiProperty({ example: 'true' })
   isSale: boolean;
+
+  @ApiProperty({ example: 'iphone' })
+  category: string;
 }

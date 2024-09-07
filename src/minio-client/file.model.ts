@@ -2,7 +2,7 @@ export interface BufferedFile {
   fieldName: string;
   originalName: string;
   encoding: string;
-  mimeType: AppMimeType;
+  mimetype: AppMimeType;
   size: number;
   buffer: Buffer;
 }
