@@ -10,6 +10,7 @@ import { UserModule } from './user/user.module';
 import { EmailService } from './email/email.service';
 import { EmailModule } from './email/email.module';
 import { RedisModule } from './redis/redis.module';
+import { ConsentModule } from './consent/consent.module';
 import * as Joi from '@hapi/joi';
 
 @Module({
@@ -50,6 +51,7 @@ import * as Joi from '@hapi/joi';
     UserModule,
     EmailModule,
     RedisModule,
+    ConsentModule,
   ],
   controllers: [AppController],
   providers: [AppService, EmailService],
