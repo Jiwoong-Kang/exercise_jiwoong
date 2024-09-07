@@ -3,6 +3,9 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import RoleGuard from '@auth/guards/role.guard';
 import { Role } from '@common/enums/role.enum';
 import { UserService } from '@user/user.service';
+import { PageOptionsDto } from '@common/dtos/page-options.dto';
+import { PageDto } from '@common/dtos/page.dto';
+import { User } from '@user/entities/user.entity';
 
 @ApiBearerAuth()
 @ApiTags('User')
@@ -12,7 +15,7 @@ export class UserController {
 
   @UseGuards(RoleGuard(Role.ADMIN))
   @Get('/all')
-  async getAllUsers() {
-    return await this.userService.getAllUsers();
+  async getAllUsers(pageOptions: PageOptionsDto): Promise<PageDto<User>> {
+    return await this.userService.getAllUsers(pageOptions);
   }
 }
