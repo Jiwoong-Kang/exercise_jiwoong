@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@root/*": ["./src/*"],
+      "@common/*": ["./src/common/*"],
+      "@config/*": ["./src/config/*"],
+      "@consent/*": ["./src/consent/*"],
+      "@email/*": ["./src/email/*"],
+      "@redis/*": ["./src/redis/*"],
+      "@database/*": ["./src/database/*"],
+      "@user/*": ["./src/user/*"],
+      "@auth/*": ["./src/auth/*"],
+      "@product/*": ["./src/product/*"],
+      "@order/*": ["./src/order/*"],
+      "profile/*": ["./src/profile/*"],
+      "@minio-client/*": ["./src/minio-client/*"],
+    }
+  }
+}

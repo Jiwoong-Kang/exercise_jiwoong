@@ -22,7 +22,7 @@ export class CreateUserDto {
   @IsNotEmpty()
   @MinLength(7)
   @Matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/)
-  @ApiProperty({ example: 'password' })
+  @ApiProperty({ example: 'password123@' })
   password?: string;
 
   @IsString()

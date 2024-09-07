@@ -50,4 +50,8 @@ export class UserService {
     });
     return 'Updated Password successfully';
   }
+
+  async getAllUsers() {
+    return await this.userRepository.find();
+  }
 }

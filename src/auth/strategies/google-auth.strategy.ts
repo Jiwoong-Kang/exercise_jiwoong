@@ -49,6 +49,11 @@ export class GoogleAuthStrategy extends PassportStrategy(
         });
         console.log('------------------------');
         done(null, newUser);
+      } else if (err.status === 409) {
+        throw new HttpException(
+          'This email already exists!',
+          HttpStatus.CONFLICT,
+        );
       }
     }
   }
